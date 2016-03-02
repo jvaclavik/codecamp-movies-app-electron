@@ -1,0 +1,25 @@
+<ion-view title="{{movie.title}}" id="view-movies-detail">
+    <ion-content>
+        <img src="http://image.tmdb.org/t/p/w500/{{movie.backdrop_path}}" alt=""/>
+        <ul class="list">
+            <li class="item">
+                <strong>Release date:</strong>
+                {{movie.release_date | date: 'yyyy'}}
+            </li>
+            <li class="item">
+                <strong>Rating:</strong>
+                {{movie.vote_average}} ({{movie.vote_count}}x)
+            </li>
+            <li class="item item-body">
+                <p>{{movie.overview}}</p>
+            </li>
+            <li class="item">
+                <button class="button button-block" ng-click="markAsWatched(movie.id)"
+                        ng-class="{'button-positive': !movieWatched, 'button-assertive': movieWatched}">
+                    <span ng-if="!movieWatched">Mark as watched</span>
+                    <span ng-if="movieWatched">Unmark as watched</span>
+                </button>
+            </li>
+        </ul>
+    </ion-content>
+</ion-view>
